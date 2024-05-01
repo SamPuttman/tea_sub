@@ -63,3 +63,21 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.hook_into :webmock
+  config.filter_sensitive_data('<REPLACE_ACTUAL_KEY_WITH_THIS>') {Rails.application.credentials.NAME_OF_EXTERNAL_API[:ACTUAL_ALPHA_NUMERIC_KEY_PROVIDED]}
+  config.configure_rspec_metadata!
+  config.allow_http_connections_when_no_cassette = true
+  config.default_cassette_options = { re_record_interval: 7.days }
+  config.default_cassette_options = { record: :once }
+  config.default_cassette_options = { record: :new_episodes }
+end
