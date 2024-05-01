@@ -39,6 +39,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
   gem 'pry'
+  gem 'simplecov'
 end
 
 group :development do
@@ -47,7 +48,6 @@ group :development do
 end
 
 group :test do
-  gem 'simplecov'
   gem 'capybara'
   gem 'shoulda-matchers'
   gem 'launchy'
