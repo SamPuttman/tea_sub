@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resources :customers, only: [:show] do
-    resources :subscriptions, only: [:index, :create]
-  end
+  namespace :api do
+    namespace :v1 do
+      resources :customers, only: [:show] do
+        resources :subscriptions, only: [:index, :create]
+      end
 
-  resources :subscriptions, only: [:update]
+      resources :subscriptions, only: [:update]
+    end
+  end
 end
