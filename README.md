@@ -1,24 +1,44 @@
-# README
+# Tea Subscription Service API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Tea Subscription Service API allows customers to manage their tea subscriptions. It provides endpoints for retrieving customer information, creating, and managing subscriptions.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+To set up the Tea Subscription Service API locally, follow these steps:
 
-* System dependencies
+1. Clone the repository:
+   ```git clone git@github.com:SamPuttman/tea_sub.git```
 
-* Configuration
+2. Install dependencies:
+   ```bundle install```
 
-* Database creation
+3. Set up the database:
+   ```rails db:create```
+   ```rails db:migrate```
 
-* Database initialization
+4. Start the server:
+   ```rails server```
 
-* How to run the test suite
+Access the API at http://localhost:3000.
 
-* Services (job queues, cache servers, search engines, etc.)
+## API Endpoints
 
-* Deployment instructions
+### Customers
 
-* ...
+- GET /api/v1/customers/:id: Retrieve a customer and their subscriptions.
+
+### Subscriptions
+
+- GET /api/v1/customers/:customer_id/subscriptions: Retrieve all subscriptions for a customer.
+- POST /api/v1/customers/:customer_id/subscriptions: Create a new subscription for a customer.
+- PUT /api/v1/subscriptions/:id: Update a subscription.
+- DELETE /api/v1/customers/:customer_id/subscriptions/:id: Cancel a customer's subscription.
+
+## Testing
+
+The Tea Subscription Service API includes a full test suite. To run the tests, use the following command:
+
+```bundle exec rspec```
+
+The tests cover both happy and sad paths.
+
