@@ -13,10 +13,12 @@ To set up the Tea Subscription Service API locally, follow these steps:
    ```bundle install```
 
 3. Set up the database:
-   ```rails db:create```
-   ```rails db:migrate```
+   ```rails db:{create,migrate}```
+   
+   If you want seeded test data:
+   ```raild db:seed```
 
-4. Start the server:
+5. Start the server:
    ```rails server```
 
 Access the API at http://localhost:3000.
@@ -40,5 +42,5 @@ The Tea Subscription Service API includes a full test suite. To run the tests, u
 
 ```bundle exec rspec```
 
-The tests cover both happy and sad paths.
+The tests cover both happy and sad paths. There is a fully functional factory for customers and teas for comprehensive testing via Postman or Postico. 
 
