@@ -16,10 +16,14 @@ class Api::V1::SubscriptionsController < ApplicationController
       render json: { errors: subscription.errors.full_messages }, status: :unprocessable_entity
     end
   end
-  
+
   def update
-    subscription = SubscriptionFacade.update_subscription(@subscription, subscription_params, params[:subscription][:tea_ids])
-    if subscription.valid?
+    subscription = Subscription.find(params[:id])
+    subscription.teas.clear
+    if subscription.update(subscription_params)
+      if params[:subscription][:tea_ids].present?
+        subscription.teas << Tea.where(id: params[:subscription][:tea_ids])
+      end
       render json: SubscriptionSerializer.new(subscription).serializable_hash
     else
       render json: { errors: subscription.errors.full_messages }, status: :unprocessable_entity

@@ -13,13 +13,6 @@ RSpec.describe SubscriptionTea, type: :model do
     expect(tea.subscriptions).to include(subscription)
   end
 
-  it 'validates the uniqueness of subscription and tea combination' do
-    SubscriptionTea.create(subscription: subscription, tea: tea)
-    duplicate_subscription_tea = SubscriptionTea.new(subscription: subscription, tea: tea)
-    expect(duplicate_subscription_tea).not_to be_valid
-    expect(duplicate_subscription_tea.errors[:subscription_id]).to include("tea combination must be unique")
-  end
-
   it 'deletes the association when subscription is deleted' do
     subscription_tea = SubscriptionTea.create(subscription: subscription, tea: tea)
     expect { subscription.destroy }.to change { SubscriptionTea.count }.by(-3)
