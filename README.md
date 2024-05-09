@@ -69,6 +69,7 @@ Access the API at http://localhost:5000.
 ```
 
 - POST /api/v1/customers/:customer_id/subscriptions: Create a new subscription for a customer.
+  
 - Example POST request: 
 ```
 {
@@ -127,45 +128,10 @@ Access the API at http://localhost:5000.
         }
     }
 }
-
-```{
-    "data": {
-        "id": "6",
-        "type": "subscription",
-        "attributes": {
-            "id": 6,
-            "title": "Monthly Tea Subscription 3",
-            "status": "active",
-            "frequency": "every_6_months",
-            "customer_id": 1,
-            "created_at": "2024-05-09T15:42:53.200Z",
-            "updated_at": "2024-05-09T15:42:53.200Z",
-            "price": "34.14",
-            "teas": [
-                {
-                    "id": 1,
-                    "title": "Lahijan",
-                    "description": "Harum ut pariatur. Sint qui dolores. Omnis explicabo ex.",
-                    "temperature": 96,
-                    "brew_time": 8,
-                    "price": "3.87",
-                    "quantity": 2
-                },
-                {
-                    "id": 2,
-                    "title": "Ujeon",
-                    "description": "Unde voluptatem aut. Deleniti hic architecto. Laborum qui libero.",
-                    "temperature": 69,
-                    "brew_time": 4,
-                    "price": "8.80",
-                    "quantity": 3
-                }
-            ]
-        }
-    }
-}
 ```
+
 - PUT /api/v1/customers/:customer_id/subscriptions/:id: Update a subscription.
+  
 - Example PUT request:
 ```
 {
