@@ -1,14 +1,21 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
+
 SimpleCov.start do
-  add_filter "/spec/"
+  add_filter '/spec/'
+  add_group 'Facades', 'app/facades'
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Models', 'app/models'
+  add_group 'Serializers', 'app/serializers'
 end
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end

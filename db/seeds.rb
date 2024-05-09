@@ -11,14 +11,19 @@
 require 'faker'
 require 'factory_bot_rails'
 
-10.times do
-  FactoryBot.create(:tea)
-end
-
 5.times do
   FactoryBot.create(:customer)
 end
 
-Customer.all.each do |customer|
-  FactoryBot.create_list(:subscription, 3, customer: customer)
+10.times do
+  FactoryBot.create(:tea)
+end
+
+customers = Customer.all
+customers.each do |customer|
+  subscription = FactoryBot.create(:subscription, customer: customer)
+  teas = Tea.all.sample(3)
+  teas.each do |tea|
+    FactoryBot.create(:subscription_tea, subscription: subscription, tea: tea)
+  end
 end

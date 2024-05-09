@@ -40,6 +40,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'pry'
   gem 'simplecov'
+  gem 'jsonapi-serializer'
 end
 
 group :development do
